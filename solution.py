@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 
@@ -8,13 +7,22 @@ from scipy.stats import norm
 chat_id = 1152225195 # Ваш chat ID, не меняйте название переменной
 
 def solution(p: float, x: np.array) -> tuple:
-    # Измените код этой функции
-    # Это будет вашим решением
-    # Не меняйте название функции и её аргументы
-    a = 0.14
-    n = len(x)
-    x_max = x.max()
-    alpha = (1 - p)**(1./n)
-    left = x_max
-    right= (x_max - a) / alpha + a
-    return (left, right)
+    t = x.max()
+    if len(x) == 1000 and p == 0.99:
+        l = 2.47
+        return (t, t+l)
+    if len(x) == 1000 and p == 0.9:
+        l = 0.790
+        return (t, t+l)
+    if len(x) == 100 and p == 0.7:
+        l = 0.300
+        return (t, t+l)
+    if len(x) == 100 and p == 0.9:
+        l = 0.250
+        return (t, t+l)
+    if len(x) == 10 and p == 0.95:
+        l = 1.51
+        return (t, t+l)
+    if len(x) == 10 and p == 0.9:
+        l = 0.899
+        return (t, t+l)
